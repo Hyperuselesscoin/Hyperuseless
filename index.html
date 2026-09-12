@@ -260,10 +260,7 @@
   </main>
 
   <section class="gallery-section">
-    <h2>Hyperuseless, through the ages</h2>
-    <p class="gallery-sub">
-      Drop images into the <code>/gallery</code> folder on GitHub and they turn up here — nothing else to touch.
-    </p>
+    <h2>Zero utility. Infinite reach.</h2>
     <div id="gallery-strip" class="gallery-strip">
       <p class="gallery-status">loading the archive…</p>
     </div>
@@ -293,27 +290,22 @@
             .sort((a, b) => a.name.localeCompare(b.name));
 
           if (images.length === 0) {
-            el.innerHTML = '<p class="gallery-status">nothing in the archive yet — drop images into /gallery on GitHub</p>';
+            el.innerHTML = '';
             return;
           }
 
           el.innerHTML = images
             .map((f) => {
-              const caption = f.name
-                .replace(IMG_EXT, "")
-                .replace(/^[0-9]+[-_.\s]*/, "")
-                .replace(/[-_]+/g, " ");
               return `
                 <div class="gallery-item">
-                  <img src="${f.download_url}" alt="${caption}" loading="lazy">
-                  <div class="cap">${caption}</div>
+                  <img src="${f.download_url}" alt="Hyperuseless coin" loading="lazy">
                 </div>
               `;
             })
             .join("");
         })
         .catch(() => {
-          el.innerHTML = '<p class="gallery-status">couldn\'t load the archive right now — check back shortly</p>';
+          el.innerHTML = '';
         });
     })();
   </script>
